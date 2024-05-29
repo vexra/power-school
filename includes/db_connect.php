@@ -1,10 +1,15 @@
 <?php
-// File: db_connect.php
 
-$servername = "localhost"; // Sesuaikan dengan nama server Anda
-$username = "root"; // Sesuaikan dengan username database Anda
-$password = ""; // Sesuaikan dengan password database Anda
-$database = "power_school"; // Sesuaikan dengan nama database Anda
+require_once __DIR__ . '/../vendor/autoload.php'; // Memuat autoloader Composer
+
+// Load .env file
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/..', '.env.local'); // Sesuaikan dengan jalur menuju .env.local Anda
+$dotenv->load();
+
+$servername = $_ENV['DB_HOST']; // Ambil nilai DB_HOST dari .env.local
+$username = $_ENV['DB_USERNAME']; // Ambil nilai DB_USERNAME dari .env.local
+$password = $_ENV['DB_PASSWORD']; // Ambil nilai DB_PASSWORD dari .env.local
+$database = $_ENV['DB_NAME']; // Ambil nilai DB_NAME dari .env.local
 
 // Membuat koneksi
 $conn = new mysqli($servername, $username, $password);

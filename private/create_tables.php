@@ -1,6 +1,6 @@
 <?php
-// File: seed_database.php
-include '../includes/db_connect.php'; // Sertakan file db_connect.php
+
+include '../includes/db_connect.php';
 
 // Buat tabel siswa
 $sql_siswa = "CREATE TABLE IF NOT EXISTS siswa (
