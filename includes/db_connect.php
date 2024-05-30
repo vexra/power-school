@@ -21,9 +21,7 @@ if ($conn->connect_error) {
 
 // Buat database jika belum ada
 $sql = "CREATE DATABASE IF NOT EXISTS $database";
-if ($conn->query($sql) === TRUE) {
-    echo "Database berhasil dibuat atau sudah ada.";
-} else {
+if ($conn->query($sql) !== TRUE) {
     echo "Error saat membuat database: " . $conn->error;
 }
 
