@@ -1,5 +1,5 @@
 <?php
-include 'db_connect.php';
+include '../../includes/db_connect.php';
 
 // Fetch data from database
 $sql = "SELECT * FROM jadwal_pelajaran";
@@ -27,14 +27,14 @@ $result = $conn->query($sql);
         <?php if ($result->num_rows > 0) : ?>
             <?php while($row = $result->fetch_assoc()) : ?>
                 <tr>
-                    <td><?php echo $row['nama_pelajaran']; ?></td>
+                    <td><?php echo $row['mata_pelajaran']; ?></td>
                     <td><?php echo $row['hari']; ?></td>
                     <td><?php echo $row['jam_mulai']; ?></td>
                     <td><?php echo $row['jam_selesai']; ?></td>
-                    <td><?php echo $row['guru_pengampu']; ?></td>
+                    <td><?php echo $row['id_guru']; ?></td>
                     <td>
-                        <a href="update.php?id=<?php echo $row['id']; ?>">Edit</a>
-                        <a href="delete.php?id=<?php echo $row['id']; ?>" onclick="return confirm('Apakah Anda yakin ingin menghapus jadwal ini?')">Hapus</a>
+                        <a href="update.php?id=<?php echo $row['id_jadwal']; ?>">Edit</a>
+                        <a href="delete.php?id=<?php echo $row['id_jadwal']; ?>" onclick="return confirm('Apakah Anda yakin ingin menghapus jadwal ini?')">Hapus</a>
                     </td>
                 </tr>
             <?php endwhile; ?>
