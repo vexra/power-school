@@ -6,126 +6,55 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Pengumuman Sekolah</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4; /* tambahan: warna latar belakang */
-        }
-        .container {
-            width: 80%;
-            margin: auto;
-            margin-top: 30px;
-            padding: 20px;
-            background-color: #fff; 
-            border-radius: 10px; 
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
-        }
-        h1 {
-            font-size: 50px;
-            text-align: center;
-            margin-bottom: 30px;
-            color: #333; /* tambahan: warna teks */
-        }
-        .announcement {
-            display: flex;
-            align-items: center;
-            border-bottom: 1px solid #ccc;
-            padding: 15px 0;
-        }
-        .announcement img {
-            margin-right: 15px;
-        }
-        .date-box {
-            background-color: #d1b894;
-            color: white;
-            text-align: center;
-            padding: 10px;
-            border-radius: 5px;
-            margin-right: 15px;
-        }
-        .date-box .date {
-            font-size: 2em;
-            font-weight: bold;
-        }
-        .date-box .month-year {
-            text-transform: uppercase;
-        }
-        .details {
-            flex: 1;
-        }
-        .details .judul {
-            font-size: 1.2em;
-            font-weight: bold;
-            margin-bottom: 10px;
-        }
-        .details .konten {
-            margin-bottom: 10px;
-        }
-        .details .tanggal, .details .penulis {
-            font-size: 0.9em;
-            color: #555;
-        }
-        .actions {
-            display: flex;
-            gap: 10px;
-        }
-        .actions button {
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            padding: 10px;
-            cursor: pointer;
-            border-radius: 5px;
-            transition: background-color 0.3s; /* tambahan: transisi efek hover */
-        }
-        .actions .delete {
-            background-color: #ff5252;
-        }
-        .actions button.delete:hover {
-            background-color: #757575; /* tambahan: warna latar belakang saat dihover */
-        }
-        .actions .update {
-            background-color: #FFA500;
-        }
-        .actions button.update:hover {
-            background-color: #757575; /* tambahan: warna latar belakang saat dihover */
-        }
-        .add-button {
-            display: inline-block; /* diganti: block ke inline-block */
-            padding: 10px 20px;
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            text-align: center;
-            text-decoration: none; /* tambahan: hapus garis bawah */
-            transition: background-color 0.3s; /* tambahan: transisi efek hover */
-        }
-
-        .add-button:hover {
-            background-color: #45a049; /* tambahan: warna latar belakang saat dihover */
-        }
-
-        
-    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Nilai Siswa</title>
 </head>
 <body>
+    <div class="shadow-lg max-w-5xl mx-auto my-10 p-4 rounded-lg bg-white">
+        <a href="create.php" class="py-2 px-4 rounded-lg bg-green-400 hover:bg-green-500 text-white">Tambah Nilai</a>
 
-<div class="container">
-    <h1>Pengumuman</h1>
+        <div class="relative overflow-x-auto shadow-md sm:rounded-lg mt-4">
+            <table class="w-full text-sm text-left text-gray-500">
+                <thead class="text-xs text-gray-700 uppercase bg-gray-50">
+                    <tr>
+                        <th scope="col" class="px-6 py-3">Id Nilai</th>
+                        <th scope="col" class="px-6 py-3">Id Siswa</th>
+                        <th scope="col" class="px-6 py-3">Mata Pelajaran</th>
+                        <th scope="col" class="px-6 py-3">Nilai</th>
+                        <th scope="col" class="px-6 py-3"><span class="sr-only">Edit</span></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                        $sql = "SELECT * FROM nilai_siswa";
+                        $result = mysqli_query($conn, $sql);
 
-    <a href="create_form.php" class="add-button">Tambah Pengumuman Baru</a>
+                        if ($result) {
+                            while($row = mysqli_fetch_assoc($result)) {
+                                $id_nilai = $row["id_nilai"];
+                                $id_siswa = $row["id_siswa"];
+                                $mata_pelajaran = $row["mata_pelajaran"];
+                                $nilai = $row["nilai"];
 
-    <div id="pengumuman">
-        <!-- Pengumuman akan ditampilkan di sini -->
-        <?php
-        include 'read.php';
-        ?>
+                                echo '
+                                    <tr class="bg-white border-b hover:bg-gray-50">
+                                        <th scope="row" class="px-6 py-4 font-medium text-gray-900">'.$id_nilai.'</th>
+                                        <td class="px-6 py-4">'.$id_siswa.'</td>
+                                        <td class="px-6 py-4">'.$mata_pelajaran.'</td>
+                                        <td class="px-6 py-4">'.$nilai.'</td>
+                                        <td class="px-6 py-4 flex items-center justify-center gap-2">
+                                            <a href="update_nilai.php?updateId='.$id_nilai.'" class="px-4 py-2 bg-blue-600 hover:bg-blue-500 text-white rounded">Edit</a>
+                                            <a href="delete_nilai.php?deleteId='.$id_nilai.'" class="px-4 py-2 bg-red-600 hover:bg-red-500 text-white rounded">Delete</a>
+                                        </td>
+                                    </tr>
+                                ';
+                            }
+                        }
+                    ?>
+                </tbody>
+            </table>
+        </div>
     </div>
-</div>
-
 </body>
 </html>
-
