@@ -44,8 +44,8 @@
                                         <td class="px-6 py-4">'.$mata_pelajaran.'</td>
                                         <td class="px-6 py-4">'.$nilai.'</td>
                                         <td class="px-6 py-4 flex items-center justify-center gap-2">
-                                            <a href="update_nilai.php?updateId='.$id_nilai.'" class="px-4 py-2 bg-blue-600 hover:bg-blue-500 text-white rounded">Edit</a>
-                                            <a href="delete_nilai.php?deleteId='.$id_nilai.'" class="px-4 py-2 bg-red-600 hover:bg-red-500 text-white rounded">Delete</a>
+                                            <a href="update.php?updateId='.$id_nilai.'" class="px-4 py-2 bg-blue-600 hover:bg-blue-500 text-white rounded">Edit</a>
+                                            <a href="delete.php?deleteId='.$id_nilai.'" class="px-4 py-2 bg-red-600 hover:bg-red-500 text-white rounded">Delete</a>
                                         </td>
                                     </tr>
                                 ';

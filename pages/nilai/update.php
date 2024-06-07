@@ -18,7 +18,7 @@
         $result = mysqli_query($conn, $sql);
 
         if ($result) {
-            header("Location: index_nilai.php");
+            header("Location: index.php");
         } else {
             echo "Error: " . $sql . "<br>" . mysqli_error($conn);
         }
