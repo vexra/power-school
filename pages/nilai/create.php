@@ -30,8 +30,18 @@
         <h2 class="text-2xl font-bold mb-6">Tambah Nilai Siswa</h2>
         <form method="post">
             <div class="mb-4">
-                <label for="id_siswa" class="block text-gray-700">ID Siswa</label>
-                <input type="number" name="id_siswa" id="id_siswa" required class="mt-2 p-2 border border-gray-300 rounded w-full">
+                <label for="id_siswa" class="block text-gray-700">Siswa</label>
+                <select name="id_siswa" id="id_siswa" required class="mt-2 p-2 bg-white border border-gray-300 rounded w-full">
+                    <option value="" disabled selected>Pilih Siswa</option>
+                    <?php
+                    $sql_siswa = "SELECT id_siswa, nama FROM siswa";
+                    $result_siswa = mysqli_query($conn, $sql_siswa);
+
+                    while ($row_siswa = mysqli_fetch_assoc($result_siswa)) {
+                        echo "<option value='" . $row_siswa['id_siswa'] . "'>" . $row_siswa['nama'] . "</option>";
+                    }
+                    ?>
+                </select>
             </div>
             <div class="mb-4">
                 <label for="mata_pelajaran" class="block text-gray-700">Mata Pelajaran</label>
@@ -46,3 +56,4 @@
     </div>
 </body>
 </html>
+
