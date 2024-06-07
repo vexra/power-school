@@ -99,11 +99,11 @@ if ($conn->query($sql_nilai) === TRUE) {
 
 // Buat tabel pengumuman
 $sql_pengumuman = "CREATE TABLE IF NOT EXISTS pengumuman (
-    id_pengumuman INT AUTO_INCREMENT PRIMARY KEY,
+    id INT AUTO_INCREMENT PRIMARY KEY,
     judul VARCHAR(255) NOT NULL,
-    isi TEXT NOT NULL,
-    tanggal_posting DATE NOT NULL,
-    pembuat VARCHAR(50) NOT NULL
+    konten TEXT NOT NULL,
+    penulis VARCHAR(100) NOT NULL,
+    tanggal DATE NOT NULL
 )";
 if ($conn->query($sql_pengumuman) === TRUE) {
     echo "Tabel pengumuman berhasil dibuat atau sudah ada.<br>";
