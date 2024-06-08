@@ -80,21 +80,22 @@
             transition: background-color 0.3s; /* tambahan: transisi efek hover */
         }
         .actions .delete {
-            background-color: #ff5252;
+            background-color: #DC2626;
         }
         .actions button.delete:hover {
-            background-color: #757575; /* tambahan: warna latar belakang saat dihover */
+            background-color: #FF6767; /* tambahan: warna latar belakang saat dihover */
         }
         .actions .update {
-            background-color: #FFA500;
+            width : 55px;
+            background-color: #2563EB;
         }
         .actions button.update:hover {
-            background-color: #757575; /* tambahan: warna latar belakang saat dihover */
+            background-color: #6392FA; /* tambahan: warna latar belakang saat dihover */
         }
         .add-button {
             display: inline-block; /* diganti: block ke inline-block */
             padding: 10px 20px;
-            background-color: #4CAF50;
+            background-color: #4ADE80;
             color: white;
             border: none;
             border-radius: 5px;

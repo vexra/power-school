@@ -32,7 +32,7 @@ if ($result->num_rows > 0) {
         echo "<div class='actions'>";
         echo "<form method='post' action='update_form.php'>";
         echo "<input type='hidden' name='id' value='" . $row['id'] . "'>";
-        echo "<button type='submit' class='update'>Update</button>";
+        echo "<button type='submit' class='update'>Edit</button>";
         echo "</form>";
         echo "<form method='post' action='delete.php' onsubmit='return confirm(\"Anda yakin ingin menghapus pengumuman ini?\");'>";
         echo "<input type='hidden' name='id' value='" . $row['id'] . "'>";
