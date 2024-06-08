@@ -10,7 +10,6 @@
     $nilai = $row["nilai"];
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        $id_siswa = $_POST["id_siswa"];
         $mata_pelajaran = $_POST["mata_pelajaran"];
         $nilai = $_POST["nilai"];
 
@@ -37,10 +36,6 @@
     <div class="max-w-5xl mx-auto my-10 p-4 rounded-lg bg-white shadow-lg">
         <h2 class="text-2xl font-bold mb-6">Edit Nilai Siswa</h2>
         <form method="post">
-            <div class="mb-4">
-                <label for="id_siswa" class="block text-gray-700">ID Siswa</label>
-                <input type="number" name="id_siswa" id="id_siswa" value="<?php echo $id_siswa; ?>" required class="mt-2 p-2 border border-gray-300 rounded w-full">
-            </div>
             <div class="mb-4">
                 <label for="mata_pelajaran" class="block text-gray-700">Mata Pelajaran</label>
                 <input type="text" name="mata_pelajaran" id="mata_pelajaran" value="<?php echo $mata_pelajaran; ?>" required class="mt-2 p-2 border border-gray-300 rounded w-full">
