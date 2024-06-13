@@ -130,10 +130,12 @@
             margin-bottom: 20px;
         }
 
+
         .stats, .details {
             display: flex;
             justify-content: space-between;
-            margin-bottom: 20px;
+            margin-bottom: 55px;
+            height: 100px;
         }
 
         .card, .detail-card {
@@ -202,12 +204,23 @@
                 </div>
             </section>
             <section class="downloads">
-                <h2>NEWS</h2>
+            <h2>HEADLINE NEWS</h2>
                 <ul>
-                    <li>CV Rio arisandi.doc</li>
-                    <li>KUNCI JAWABAN PETRUK.docx</li>
-                    <li>Nilai UAS WEB.pdf</li>
-                    <li>Data Siswa Berprestasi.pdf</li>
+                    <?php
+                    include '../../includes/db_connect.php'; // Sesuaikan path dengan struktur direktori Anda
+                    
+                    $sql = "SELECT id, judul FROM pengumuman ORDER BY tanggal DESC";
+                    $result = $conn->query($sql);
+
+                    if ($result->num_rows > 0) {
+                        while($row = $result->fetch_assoc()) {
+                            echo "<li><a href='../pages/Pengumuman/detail.php?id=" . $row["id"] . "'>" . $row["judul"] . "</a></li>";
+                        }
+                    } else {
+                        echo "<li>Tidak ada pengumuman tersedia</li>";
+                    }
+                    $conn->close();
+                    ?>
                 </ul>
             </section>
             <section class="details">
