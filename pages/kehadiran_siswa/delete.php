@@ -1,15 +1,16 @@
 <?php
-include 'db_connect.php';
+include '../../includes/db_connect.php';
 
-$id = $_GET['id'];
+if (isset($_GET['id'])) {
+    $id = $_GET['id'];
 
-$sql = "DELETE FROM kehadiran_siswa WHERE id=$id";
-
-if ($conn->query($sql) === TRUE) {
-    header('Location: index.php');
+    $sql = "DELETE FROM kehadiran_siswa WHERE id='$id'";
+    if (mysqli_query($conn, $sql)) {
+        header('Location: index.php');
+    } else {
+        echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+    }
 } else {
-    echo "Error deleting record: " . $conn->error;
+    header('Location: index.php');
 }
-
-$conn->close();
 ?>
