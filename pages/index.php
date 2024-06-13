@@ -179,7 +179,7 @@
                     <li class="menu-item"><a href="#"><i class="fas fa-school"></i><span class="menu-item-text">Kelas</span></a></li>
                     <li class="menu-item"><a href="#"><i class="fas fa-calendar-alt"></i><span class="menu-item-text">Jadwal</span></a></li>
                     <li class="menu-item"><a href="#"><i class="fas fa-check"></i><span class="menu-item-text">Kehadiran</span></a></li>
-                    <li class="menu-item"><a href="#"><i class="fas fa-bullhorn"></i><span class="menu-item-text">Pengumuman</span></a></li>
+                    <li class="menu-item"><a href="Pengumuman/index.php"><i class="fas fa-bullhorn"></i><span class="menu-item-text">Pengumuman</span></a></li>
                 </ul>
             </nav>
         </aside>
@@ -188,11 +188,6 @@
             <header>
                 <div class="header-left">
                     <h1>Selamat Datang di Halaman Administrator</h1>
-                </div>
-                <div class="header-right">
-                    <span>Rio Arisandi</span>
-                    <span>Senin, 30 November 2020</span>
-                    <span>20:20:20</span>
                 </div>
             </header>
             <section class="stats">
