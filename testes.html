@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         * {
             margin: 0;
@@ -24,7 +25,7 @@
 
         .sidebar {
             width: 250px;
-            background-color: #2C3E50;
+            background-color: #315a84;
             color: #ecf0f1;
             padding: 20px;
         }
@@ -34,28 +35,47 @@
             margin-bottom: 20px;
         }
 
-        .profile-pic {
-            width: 100px;
-            height: 100px;
-            background-color: #bdc3c7;
-            border-radius: 50%;
-            margin: 0 auto;
-            margin-bottom: 10px;
+        .profile img {
+            width: 170px;
+            height: 170px;   
         }
 
         .menu ul {
             list-style: none;
+            width: 100%;
+            padding: 0;
         }
 
         .menu-item {
             margin: 10px 0;
-            padding-bottom: 10px;
-            border-bottom: 1px solid #7f8c8d; 
+            padding: 10px;
+            border-radius: 5px;
+            transition: background 0.4s;
         }
 
         .menu-item a {
             color: #ecf0f1;
             text-decoration: none;
+            display: flex;
+            align-items: center;
+            
+        }
+
+        .menu-item:hover {
+            background-color :#6e849d;
+        }
+
+        .menu-item a i {
+            margin-right: 30px;
+            font-size: 26px; 
+            width: 15px;
+        }
+
+        .menu-item-text {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            font-size: 18px;
         }
 
         .main-content {
@@ -109,20 +129,18 @@
     <div class="container">
         <aside class="sidebar">
             <div class="profile">
-                <div class="profile-pic"></div>
-                <h2>Rio Arisandi</h2>
-                <span>Online</span>
+                <img src="pict/logo.png" alt="Profile Picture">
             </div>
             <nav class="menu">
                 <ul>
-                    <li class="menu-item"><a href="#">Dashboard</a></li>
-                    <li class="menu-item"><a href="#">Siswa</a></li>
-                    <li class="menu-item"><a href="#">Guru</a></li>
-                    <li class="menu-item"><a href="#">Nilai</a></li>
-                    <li class="menu-item"><a href="#">Kelas</a></li>
-                    <li class="menu-item"><a href="#">Jadwal</a></li>
-                    <li class="menu-item"><a href="#">Kehadiran</a></li>
-                    <li class="menu-item"><a href="#">Pengumuman</a></li>
+                    <li class="menu-item"><a href="#"><i class="fas fa-tachometer-alt"></i><span class="menu-item-text">Dashboard</span></a></li>
+                    <li class="menu-item"><a href="#"><i class="fas fa-user-graduate"></i><span class="menu-item-text">Siswa</span></a></li>
+                    <li class="menu-item"><a href="#"><i class="fas fa-chalkboard-teacher"></i><span class="menu-item-text">Guru</span></a></li>
+                    <li class="menu-item"><a href="#"><i class="fas fa-clipboard-list"></i><span class="menu-item-text">Nilai</span></a></li>
+                    <li class="menu-item"><a href="#"><i class="fas fa-school"></i><span class="menu-item-text">Kelas</span></a></li>
+                    <li class="menu-item"><a href="#"><i class="fas fa-calendar-alt"></i><span class="menu-item-text">Jadwal</span></a></li>
+                    <li class="menu-item"><a href="#"><i class="fas fa-check"></i><span class="menu-item-text">Kehadiran</span></a></li>
+                    <li class="menu-item"><a href="#"><i class="fas fa-bullhorn"></i><span class="menu-item-text">Pengumuman</span></a></li>
                 </ul>
             </nav>
         </aside>
@@ -130,11 +148,6 @@
             <header>
                 <div class="header-left">
                     <h1>Selamat Datang di Halaman Administrator</h1>
-                </div>
-                <div class="header-right">
-                    <span>Rio Arisandi</span>
-                    <span>Senin, 30 November 2020</span>
-                    <span>20:20:20</span>
                 </div>
             </header>
             <section class="stats">
