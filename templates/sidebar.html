@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            display: flex;
+            height: 100vh;
+            background-color: #ecf0f1;
+        }
+
+        .container {
+            display: flex;
+            width: 100%;
+        }
+
+        .sidebar {
+            width: 250px;
+            background-color: #315a84;
+            color: #ecf0f1;
+            padding: 20px;
+           
+        }
+
+        .profile {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .profile img {
+            width: 170px;
+            height: 170px; 
+            margin-bottom: 10px;
+           
+        }
+
+        .menu ul {
+            list-style: none;
+        }
+
+        .menu-item {
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 5px;
+            transition: background 0.4s;
+        }
+
+        .menu-item a {
+            color: #ecf0f1;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            font-size: 1.1em;
+        }
+
+        .menu-item:hover {
+            background-color :#6e849d;
+        }
+
+        .menu-item a i {
+            margin-right: 20px;
+            font-size: 27px;
+        }
+
+    
+    </style>
+</head>
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            <div class="profile">
+                <img src="pict/logo.png" alt="Profile Picture">
+            </div>
+            <nav class="menu">
+                <ul>
+                    <li class="menu-item"><a href="#"><i class="fas fa-tachometer-alt"></i>Dashboard</a></li>
+                    <li class="menu-item"><a href="#"><i class="fas fa-user-graduate"></i>Siswa</a></li>
+                    <li class="menu-item"><a href="#"><i class="fas fa-chalkboard-teacher"></i>Guru</a></li>
+                    <li class="menu-item"><a href="#"><i class="fas fa-clipboard-list"></i>Nilai</a></li>
+                    <li class="menu-item"><a href="#"><i class="fas fa-school"></i>Kelas</a></li>
+                    <li class="menu-item"><a href="#"><i class="fas fa-calendar-alt"></i>Jadwal</a></li>
+                    <li class="menu-item"><a href="#"><i class="fas fa-check"></i>Kehadiran</a></li>
+                    <li class="menu-item"><a href="#"><i class="fas fa-bullhorn"></i>Pengumuman</a></li>
+                </ul>
+            </nav>
+        </aside>
+    </div>
+</body>
+</html>
