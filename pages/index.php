@@ -146,8 +146,15 @@
             margin: 0 10px;
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s, background-color 0.3s;
+
         }
 
+        .card:hover, .detail-card:hover {
+            transform: translateY(-10px);
+            background-color: #f1f1f1;
+            cursor: pointer;
+        }
         .card h3, .detail-card h3 {
             font-size: 2rem;
             margin-bottom: 10px;
@@ -163,6 +170,18 @@
             margin: 10px 0;
             border-radius: 5px;
             box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s, background-color 0.3s;
+        }
+
+        .downloads ul li:hover {
+            transform: translateY(-5px);
+            background-color: #f1f1f1;
+            cursor: pointer;
+        }
+
+        .downloads ul li a {
+            text-decoration: none;
+            color: inherit;
         }
     </style>
 </head>
@@ -194,12 +213,15 @@
             </header>
             <section class="stats">
                 <div class="card">
+                <a href="nilai/index.php" style="text-decoration: none; color: inherit;">
                     <h3>Nilai</h3>
                 </div>
                 <div class="card">
+                <a href="kehadiran_siswa/index.php" style="text-decoration: none; color: inherit;">
                     <h3>Kehadiran</h3>
                 </div>
                 <div class="card">
+                <a href="pengumuman/index.php" style="text-decoration: none; color: inherit;">
                     <h3>Pengumuman</h3>
                 </div>
             </section>
