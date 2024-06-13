@@ -147,7 +147,8 @@
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0,0,0,0.1);
             transition: transform 0.3s, background-color 0.3s;
-
+            text-decoration: none;
+            color: inherit;
         }
 
         .card:hover, .detail-card:hover {
@@ -180,8 +181,11 @@
         }
 
         .downloads ul li a {
+            display: block;
             text-decoration: none;
             color: inherit;
+            height: 100%;
+            width: 100%;
         }
     </style>
 </head>
