@@ -212,24 +212,21 @@
                 </div>
             </header>
             <section class="stats">
-                <div class="card">
-                <a href="nilai/index.php" style="text-decoration: none; color: inherit;">
+                <a href="nilai/index.php" class="card">
                     <h3>Nilai</h3>
-                </div>
-                <div class="card">
-                <a href="kehadiran_siswa/index.php" style="text-decoration: none; color: inherit;">
+                </a>
+                <a href="kehadiran_siswa/index.php" class="card">
                     <h3>Kehadiran</h3>
-                </div>
-                <div class="card">
-                <a href="pengumuman/index.php" style="text-decoration: none; color: inherit;">
+                </a>
+                <a href="pengumuman/index.php" class="card">
                     <h3>Pengumuman</h3>
-                </div>
+                </a>
             </section>
             <section class="downloads">
             <h2>HEADLINE NEWS</h2>
                 <ul>
                     <?php
-                    include '../../includes/db_connect.php'; // Sesuaikan path dengan struktur direktori Anda
+                    include '../../includes/db_connect.php';
                     
                     $sql = "SELECT id, judul FROM pengumuman ORDER BY tanggal DESC";
                     $result = $conn->query($sql);
