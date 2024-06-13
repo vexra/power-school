@@ -1,15 +1,14 @@
 <?php
 include '../../includes/db_connect.php';
 
-$id = $_GET['id'];
+$id_jadwal = $_GET['deleteId'];
 
-$sql = "DELETE FROM jadwal_pelajaran WHERE id_jadwal=$id";
+$sql = "DELETE FROM `jadwal_pelajaran` WHERE id_jadwal='$id_jadwal'";
+$result = mysqli_query($conn, $sql);
 
-if ($conn->query($sql) === TRUE) {
-    header('Location: index.php');
+if ($result) {
+    header("Location: index.php");
 } else {
-    echo "Error deleting record: " . $conn->error;
+    die(mysqli_error($conn));
 }
-
-$conn->close();
 ?>

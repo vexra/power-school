@@ -1,130 +1,79 @@
 <?php
 include '../../includes/db_connect.php';
 
-$id_jadwal = isset($_GET['id']) ? intval($_GET['id']) : 0; // Memastikan 'id' ada dan merupakan angka valid
-
-if ($id_jadwal <= 0) {
-    die("ID Jadwal tidak valid.");
-}
+$id_jadwal = $_GET['updateId'];
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $mata_pelajaran = $_POST['mata_pelajaran'];
+    $nama_pelajaran = $_POST['nama_pelajaran'];
+    $guru_id = $_POST['guru_id'];
     $hari = $_POST['hari'];
     $jam_mulai = $_POST['jam_mulai'];
     $jam_selesai = $_POST['jam_selesai'];
-    $id_guru = $_POST['id_guru'];
+    $ruang = $_POST['ruang'];
 
-    $sql = "UPDATE jadwal_pelajaran
-            SET mata_pelajaran=?, hari=?, jam_mulai=?, jam_selesai=?, id_guru=?
-            WHERE id_jadwal=?";
-    
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("ssssii", $mata_pelajaran, $hari, $jam_mulai, $jam_selesai, $id_guru, $id_jadwal);
+    $sql = "UPDATE `jadwal_pelajaran` SET nama_pelajaran='$nama_pelajaran', guru_id='$guru_id', hari='$hari', jam_mulai='$jam_mulai', jam_selesai='$jam_selesai', ruang='$ruang' WHERE id_jadwal='$id_jadwal'";
 
-    if ($stmt->execute()) {
-        header('Location: index.php');
-        exit; // Pastikan untuk keluar dari skrip setelah melakukan pengalihan
+    $result = mysqli_query($conn, $sql);
+    if ($result) {
+        header("Location: index.php");
     } else {
-        echo "Error updating record: " . $stmt->error;
+        die(mysqli_error($conn));
     }
-
-    $stmt->close();
-} else {
-    $sql = "SELECT * FROM jadwal_pelajaran WHERE id_jadwal=?";
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("i", $id_jadwal);
-    $stmt->execute();
-    $result = $stmt->get_result();
-
-    if ($result->num_rows == 0) {
-        die("Jadwal tidak ditemukan.");
-    }
-
-    $row = $result->fetch_assoc();
-    $stmt->close();
 }
 
-$conn->close();
+$sql = "SELECT * FROM `jadwal_pelajaran` WHERE id_jadwal='$id_jadwal'";
+$result = mysqli_query($conn, $sql);
+$row = mysqli_fetch_assoc($result);
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Edit Jadwal</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f8f9fa;
-            margin: 0;
-            padding: 20px;
-        }
-        h1 {
-            color: #343a40;
-            text-align: center;
-        }
-        .container {
-            width: 50%;
-            margin: 0 auto;
-            background-color: #ffffff;
-            padding: 20px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
-        }
-        label {
-            display: block;
-            margin: 10px 0 5px;
-            color: #343a40;
-        }
-        input[type="text"],
-        input[type="time"],
-        input[type="number"] {
-            width: 100%;
-            padding: 10px;
-            margin: 5px 0 20px;
-            border: 1px solid #ced4da;
-            border-radius: 4px;
-        }
-        input[type="submit"] {
-            background-color: #28a745;
-            color: #ffffff;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            display: inline-block;
-        }
-        input[type="submit"]:hover {
-            background-color: #218838;
-        }
-        .back-link {
-            display: inline-block;
-            margin-top: 20px;
-            color: #007bff;
-            text-decoration: none;
-        }
-        .back-link:hover {
-            text-decoration: underline;
-        }
-    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Edit Jadwal Pelajaran</title>
 </head>
 <body>
-    <div class="container">
-        <h1>Edit Jadwal Pelajaran</h1>
-        <form method="POST" action="">
-            <label>Mata Pelajaran:</label>
-            <input type="text" name="mata_pelajaran" value="<?php echo htmlspecialchars($row['mata_pelajaran']); ?>" required>
-            <label>Hari:</label>
-            <input type="text" name="hari" value="<?php echo htmlspecialchars($row['hari']); ?>" required>
-            <label>Jam Mulai:</label>
-            <input type="time" name="jam_mulai" value="<?php echo htmlspecialchars($row['jam_mulai']); ?>" required>
-            <label>Jam Selesai:</label>
-            <input type="time" name="jam_selesai" value="<?php echo htmlspecialchars($row['jam_selesai']); ?>" required>
-            <label>Guru Pengampu:</label>
-            <input type="number" name="id_guru" value="<?php echo htmlspecialchars($row['id_guru']); ?>" required>
-            <input type="submit" value="Update">
+    <div class="max-w-lg mx-auto my-10 p-4 rounded-lg bg-white dark:bg-slate-900">
+        <form method="POST">
+            <div class="mb-4">
+                <label for="nama_pelajaran" class="block text-gray-700 dark:text-gray-400">Nama Pelajaran</label>
+                <input type="text" name="nama_pelajaran" id="nama_pelajaran" class="mt-1 block w-full" value="<?php echo $row['nama_pelajaran']; ?>" required>
+            </div>
+            <div class="mb-4">
+                <label for="guru_id" class="block text-gray-700 dark:text-gray-400">Guru</label>
+                <select name="guru_id" id="guru_id" class="mt-1 block w-full" required>
+                    <?php
+                    $sql_guru = "SELECT * FROM `guru`";
+                    $result_guru = mysqli_query($conn, $sql_guru);
+                    if ($result_guru) {
+                        while ($guru = mysqli_fetch_assoc($result_guru)) {
+                            $selected = $guru['id_guru'] == $row['guru_id'] ? 'selected' : '';
+                            echo '<option value="'.$guru['id_guru'].'" '.$selected.'>'.$guru['nama'].'</option>';
+                        }
+                    }
+                    ?>
+                </select>
+            </div>
+            <div class="mb-4">
+                <label for="hari" class="block text-gray-700 dark:text-gray-400">Hari</label>
+                <input type="text" name="hari" id="hari" class="mt-1 block w-full" value="<?php echo $row['hari']; ?>" required>
+            </div>
+            <div class="mb-4">
+                <label for="jam_mulai" class="block text-gray-700 dark:text-gray-400">Jam Mulai</label>
+                <input type="time" name="jam_mulai" id="jam_mulai" class="mt-1 block w-full" value="<?php echo $row['jam_mulai']; ?>" required>
+            </div>
+            <div class="mb-4">
+                <label for="jam_selesai" class="block text-gray-700 dark:text-gray-400">Jam Selesai</label>
+                <input type="time" name="jam_selesai" id="jam_selesai" class="mt-1 block w-full" value="<?php echo $row['jam_selesai']; ?>" required>
+            </div>
+            <div class="mb-4">
+                <label for="ruang" class="block text-gray-700 dark:text-gray-400">Ruang</label>
+                <input type="text" name="ruang" id="ruang" class="mt-1 block w-full" value="<?php echo $row['ruang']; ?>" required>
+            </div>
+            <button type="submit" class="px-4 py-2 bg-blue-600 hover:bg-blue-500 dark:bg-blue-500 hover:bg-blue-600 rounded-lg text-white font-medium">Update</button>
         </form>
-        <a class="back-link" href="index.php">Kembali</a>
     </div>
 </body>
 </html>
