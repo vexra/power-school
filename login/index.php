@@ -6,7 +6,7 @@
 
     // Periksa apakah pengguna telah login
     if (isset($_SESSION['userId']) && $_SESSION['role'] == 'Admin') {
-        header('Location: /power-school/pages/index.php');
+        header('Location: /power-school/dashboard/index.php');
         exit();
     }
 
@@ -42,7 +42,7 @@
                 $_SESSION['role'] = $row['hak_akses'];
 
                 // Redirect ke halaman dashboard
-                header('Location: /power-school/pages/index.php');
+                header('Location: /power-school/dashboard/index.php');
                 exit();
             } else {
                 // Jika tidak ada pengguna yang sesuai, tampilkan pesan kesalahan

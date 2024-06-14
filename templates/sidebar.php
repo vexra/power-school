@@ -99,14 +99,14 @@
     </div>
     <nav class="menu">
         <ul>
-            <li class="menu-item"><a href="/power-school/pages/"><i class="fas fa-tachometer-alt"></i><span class="menu-item-text">Dashboard</span></a></li>
-            <li class="menu-item"><a href="/power-school/pages/siswa/index.php"><i class="fas fa-user-graduate"></i><span class="menu-item-text">Siswa</span></a></li>
-            <li class="menu-item"><a href="/power-school/pages/guru/index.php"><i class="fas fa-chalkboard-teacher"></i><span class="menu-item-text">Guru</span></a></li>
-            <li class="menu-item"><a href="/power-school/pages/nilai/index.php"><i class="fas fa-clipboard-list"></i><span class="menu-item-text">Nilai</span></a></li>
-            <li class="menu-item"><a href="/power-school/pages/kelas/index.php"><i class="fas fa-school"></i><span class="menu-item-text">Kelas</span></a></li>
-            <li class="menu-item"><a href="/power-school/pages/jadwal_pelajaran/index.php"><i class="fas fa-calendar-alt"></i><span class="menu-item-text">Jadwal</span></a></li>
-            <li class="menu-item"><a href="/power-school/pages/kehadiran_siswa"><i class="fas fa-check"></i><span class="menu-item-text">Kehadiran</span></a></li>
-            <li class="menu-item"><a href="/power-school/pages/Pengumuman/index.php"><i class="fas fa-bullhorn"></i><span class="menu-item-text">Pengumuman</span></a></li>
+            <li class="menu-item"><a href="/power-school/dashboard/"><i class="fas fa-tachometer-alt"></i><span class="menu-item-text">Dashboard</span></a></li>
+            <li class="menu-item"><a href="/power-school/dashboard/siswa/index.php"><i class="fas fa-user-graduate"></i><span class="menu-item-text">Siswa</span></a></li>
+            <li class="menu-item"><a href="/power-school/dashboard/guru/index.php"><i class="fas fa-chalkboard-teacher"></i><span class="menu-item-text">Guru</span></a></li>
+            <li class="menu-item"><a href="/power-school/dashboard/nilai/index.php"><i class="fas fa-clipboard-list"></i><span class="menu-item-text">Nilai</span></a></li>
+            <li class="menu-item"><a href="/power-school/dashboard/kelas/index.php"><i class="fas fa-school"></i><span class="menu-item-text">Kelas</span></a></li>
+            <li class="menu-item"><a href="/power-school/dashboard/jadwal_pelajaran/index.php"><i class="fas fa-calendar-alt"></i><span class="menu-item-text">Jadwal</span></a></li>
+            <li class="menu-item"><a href="/power-school/dashboard/kehadiran_siswa"><i class="fas fa-check"></i><span class="menu-item-text">Kehadiran</span></a></li>
+            <li class="menu-item"><a href="/power-school/dashboard/Pengumuman/index.php"><i class="fas fa-bullhorn"></i><span class="menu-item-text">Pengumuman</span></a></li>
         </ul>
     </nav>
 </aside>

@@ -134,7 +134,7 @@
 
                     if ($result->num_rows > 0) {
                         while($row = $result->fetch_assoc()) {
-                            echo "<li><a href='../pages/Pengumuman/detail.php?id=" . $row["id"] . "'>" . $row["judul"] . "</a></li>";
+                            echo "<li><a href='Pengumuman/detail.php?id=" . $row["id"] . "'>" . $row["judul"] . "</a></li>";
                         }
                     } else {
                         echo "<li>Tidak ada pengumuman tersedia</li>";
