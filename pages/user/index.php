@@ -10,9 +10,9 @@ include '../../includes/db_connect.php';
     <script src="https://cdn.tailwindcss.com"></script>
     <title>Manajemen User</title>
 </head>
-<body class="bg-gray-100">
-    <div class="max-w-6xl mx-auto mt-10 p-6 bg-white rounded-lg shadow-lg">
-        <a href="create.php" class="bg-green-500 text-white py-2 px-4 rounded-lg hover:bg-green-600 mb-4 inline-block">Tambah User</a>
+<body>
+<div class="shadow-lg max-w-5xl mx-auto my-10 p-4 rounded-lg bg-white dark:bg-slate-900">
+    <a href="create.php" class="py-2 px-4 rounded-lg bg text-gray-900 dark:text-white bg-green-400 hover:bg-green-500">Tambah User</a>
         <div class="relative overflow-x-auto shadow-md sm:rounded-lg mt-4">
             <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                 <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">

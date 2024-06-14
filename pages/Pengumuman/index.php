@@ -37,19 +37,21 @@
             margin-right: 15px;
         }
         .date-box {
-            background-color: #d1b894;
+            background-color: #2C3E50;
             color: white;
             text-align: center;
-            padding: 10px;
+            padding: 20px;
             border-radius: 5px;
             margin-right: 15px;
         }
         .date-box .date {
-            font-size: 2em;
+            font-size: 4em;
             font-weight: bold;
+            margin-bottom: 5px;
         }
         .date-box .month-year {
             text-transform: uppercase;
+            font-size: 22px;
         }
         .details {
             flex: 1;
@@ -88,6 +90,7 @@
         .actions .update {
             width : 55px;
             background-color: #2563EB;
+            margin-left: 5px;
         }
         .actions button.update:hover {
             background-color: #6392FA; /* tambahan: warna latar belakang saat dihover */
@@ -129,4 +132,3 @@
 
 </body>
 </html>
-

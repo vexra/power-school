@@ -11,12 +11,11 @@
     <title>Nilai Siswa</title>
 </head>
 <body>
-    <div class="shadow-lg max-w-5xl mx-auto my-10 p-4 rounded-lg bg-white">
-        <a href="create.php" class="py-2 px-4 rounded-lg bg-green-400 hover:bg-green-500 text-white">Tambah Nilai</a>
-
+<div class="shadow-lg max-w-5xl mx-auto my-10 p-4 rounded-lg bg-white dark:bg-slate-900">
+    <a href="create.php" class="py-2 px-4 rounded-lg bg text-gray-900 dark:text-white bg-green-400 hover:bg-green-500">Tambah Nilai</a>
         <div class="relative overflow-x-auto shadow-md sm:rounded-lg mt-4">
-            <table class="w-full text-sm text-left text-gray-500">
-                <thead class="text-xs text-gray-700 uppercase bg-gray-50">
+            <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                     <tr>
                         <th scope="col" class="px-6 py-3">Id Nilai</th>
                         <th scope="col" class="px-6 py-3">Id Siswa</th>
@@ -38,8 +37,8 @@
                                 $nilai = $row["nilai"];
 
                                 echo '
-                                    <tr class="bg-white border-b hover:bg-gray-50">
-                                        <th scope="row" class="px-6 py-4 font-medium text-gray-900">'.$id_nilai.'</th>
+                                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">'.$id_nilai.'</th>
                                         <td class="px-6 py-4">'.$id_siswa.'</td>
                                         <td class="px-6 py-4">'.$mata_pelajaran.'</td>
                                         <td class="px-6 py-4">'.$nilai.'</td>
