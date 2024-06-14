@@ -25,45 +25,64 @@
                         <th scope="col" class="px-6 py-3">Hari</th>
                         <th scope="col" class="px-6 py-3">Jam Mulai</th>
                         <th scope="col" class="px-6 py-3">Jam Selesai</th>
-                        <th scope="col" class="px-6 py-3">Ruang</th>
+                        <th scope="col" class="px-6 py-3">Kelas</th>
                         <th scope="col" class="px-6 py-3"><span class="sr-only">Edit</span></th>
                     </tr>
                 </thead>
                 <tbody>
-                    <?php
-                        $sql = "SELECT jp.*, g.nama AS nama_guru FROM `jadwal_pelajaran` jp JOIN `guru` g ON jp.guru_id = g.id_guru";
-                        $result = mysqli_query($conn, $sql);
+                <?php
+                    $sql = "SELECT jadwal_pelajaran.*, kelas.nama_kelas, guru.nama AS nama_guru
+                            FROM jadwal_pelajaran
+                            INNER JOIN kelas ON jadwal_pelajaran.id_kelas = kelas.id_kelas
+                            INNER JOIN guru ON jadwal_pelajaran.id_guru = guru.id_guru";
+                    $result = mysqli_query($conn, $sql);
 
-                        if ($result) {
-                            while($row = mysqli_fetch_assoc($result)) {
-                                $id_jadwal = $row["id_jadwal"];
-                                $nama_pelajaran = $row["nama_pelajaran"];
-                                $nama_guru = $row["nama_guru"];
-                                $hari = $row["hari"];
-                                $jam_mulai = $row["jam_mulai"];
-                                $jam_selesai = $row["jam_selesai"];
-                                $ruang = $row["ruang"];
+                    if ($result) {
+                        while ($row = mysqli_fetch_assoc($result)) {
+                            $id_jadwal = $row['id_jadwal'];
+                            $hari = $row['hari'];
+                            $jam_mulai = $row['jam_mulai'];
+                            $jam_selesai = $row['jam_selesai'];
+                            $nama_kelas = $row['nama_kelas'];
+                            $mata_pelajaran = $row['mata_pelajaran'];
+                            $nama_guru = $row['nama_guru'];
 
-                                echo '
-                                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                            '.$id_jadwal.'
-                                        </th>
-                                        <td class="px-6 py-4">'.$nama_pelajaran.'</td>
-                                        <td class="px-6 py-4">'.$nama_guru.'</td>
-                                        <td class="px-6 py-4">'.$hari.'</td>
-                                        <td class="px-6 py-4">'.$jam_mulai.'</td>
-                                        <td class="px-6 py-4">'.$jam_selesai.'</td>
-                                        <td class="px-6 py-4">'.$ruang.'</td>
-                                        <td class="px-6 py-4 flex items-center justify-center gap-2">
-                                            <a href="update.php?updateId='.$id_jadwal.'" class="px-4 py-2 bg-blue-600 hover:bg-blue-500 rounded-lg text-white font-medium">Edit</a>
-                                            <a href="delete.php?deleteId='.$id_jadwal.'" class="px-4 py-2 bg-red-600 hover:bg-red-500 rounded-lg text-white font-medium">Delete</a>
-                                        </td>
-                                    </tr>
-                                ';
-                            }
+                            echo '
+                                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                                    <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                        ' . $id_jadwal . '
+                                    </th>
+                                    <td class="px-6 py-4">
+                                        ' . $mata_pelajaran . '
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        ' . $nama_guru . '
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        ' . $hari . '
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        ' . $jam_mulai . '
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        ' . $jam_selesai . '
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        ' . $nama_kelas . '
+                                    </td>
+                                    <td class="px-6 py-4 flex items-center justify-center gap-2">
+                                        <a href="update.php?updateId=' . $id_jadwal . '" class="px-4 py-2 bg-blue-600 hover:bg-blue-500 dark:bg-blue-500 rounded-lg text-white font-medium">
+                                            Edit
+                                        </a>
+                                        <a href="delete.php?deleteId=' . $id_jadwal . '" class="px-4 py-2 bg-red-600 hover:bg-red-500 dark:bg-red-500 rounded-lg text-white font-medium">
+                                            Delete
+                                        </a>
+                                    </td>
+                                </tr>
+                            ';
                         }
-                    ?>
+                    }
+                ?>
                 </tbody>
             </table>
         </div>
