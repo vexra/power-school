@@ -74,18 +74,16 @@
                         <!-- username -->
                         <div>
                             <input id="username" class="w-full p-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white" type="text" placeholder="Username" name="username" value="<?php echo isset($_POST['username']) ? $_POST['username'] : ''; ?>" />
-                            <small id="username-error" class="text-red-500"><?php echo $errors['username']; ?></small>
+                            <small id="username-error" class="text-red-500"><?php echo isset($errors['username']) ? $errors['username'] : ''; ?></small>
                         </div>
 
                         <!-- password -->
                         <div>
                             <input id="password" class="w-full p-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white" type="password" placeholder="Password" name="password" />
-                            <?php if(isset($errors['password'])) { ?>
-                                <small class="text-red-500"><?php echo $errors['password']; ?></small>
-                            <?php } ?>
+                            <small class="text-red-500"><?php echo isset($errors['password']) ? $errors['password'] : ''; ?></small>
                         </div>
 
-                        <small id="login-error" class="text-red-500"><?php echo $errors['login']; ?></small>
+                        <small id="login-error" class="text-red-500"><?php echo isset($errors['login']) ? $errors['login'] : ''; ?></small>
 
                         <button type="submit" name="submit" class="tracking-wide font-semibold bg-[#F27474] text-gray-100 w-full py-4 rounded-lg hover:bg-[#f16161] transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none">
                             <svg class="w-6 h-6 -ml-2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
