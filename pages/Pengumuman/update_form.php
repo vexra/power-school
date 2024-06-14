@@ -1,12 +1,13 @@
 <?php
     include '../../includes/db_connect.php';
+    include '../../includes/session.php';
     
-$id = $_POST['id'];
-$sql = "SELECT * FROM pengumuman WHERE id = $id";
-$result = $conn->query($sql);
+    $id = $_POST['id'];
+    $sql = "SELECT * FROM pengumuman WHERE id = $id";
+    $result = $conn->query($sql);
 
-if ($result->num_rows > 0) {
-    $row = $result->fetch_assoc();
+    if ($result->num_rows > 0) {
+        $row = $result->fetch_assoc();
 ?>
 
 <!DOCTYPE html>

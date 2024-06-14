@@ -5,8 +5,8 @@
     session_start();
 
     // Periksa apakah pengguna telah login
-    if (isset($_SESSION['userId'])) {
-        header('Location: ../pages/index.php');
+    if (isset($_SESSION['userId']) && $_SESSION['role'] == 'Admin') {
+        header('Location: /power-school/pages/index.php');
         exit();
     }
 
@@ -29,7 +29,7 @@
             $password = $_POST['password'];
 
             // Query untuk memeriksa keberadaan pengguna dengan peran admin
-            $query = "SELECT id_user FROM user WHERE username = ? AND password = ? AND hak_akses = 'Admin'";
+            $query = "SELECT id_user, hak_akses FROM user WHERE username = ? AND password = ? AND hak_akses = 'Admin'";
             $stmt = $conn->prepare($query);
             $stmt->bind_param("ss", $username, $password);
             $stmt->execute();
@@ -39,9 +39,10 @@
                 // Jika berhasil login, atur session 'userId' dengan id pengguna
                 $row = $result->fetch_assoc();
                 $_SESSION['userId'] = $row['id_user'];
+                $_SESSION['role'] = $row['hak_akses'];
 
                 // Redirect ke halaman dashboard
-                header('Location: ../pages/index.php');
+                header('Location: /power-school/pages/index.php');
                 exit();
             } else {
                 // Jika tidak ada pengguna yang sesuai, tampilkan pesan kesalahan

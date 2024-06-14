@@ -1,39 +1,40 @@
 <?php
-include '../../includes/db_connect.php';
+    include '../../includes/db_connect.php';
+    include '../../includes/session.php';
 
-$error = ""; // Variable to store error messages
-$success = ""; // Variable to store success message
+    $error = ""; // Variable to store error messages
+    $success = ""; // Variable to store success message
 
-if (isset($_GET['updateId'])) {
-    $id_user = $_GET['updateId'];
-    $sql = "SELECT * FROM user WHERE id_user=$id_user";
-    $result = mysqli_query($conn, $sql);
-    $row = mysqli_fetch_assoc($result);
+    if (isset($_GET['updateId'])) {
+        $id_user = $_GET['updateId'];
+        $sql = "SELECT * FROM user WHERE id_user=$id_user";
+        $result = mysqli_query($conn, $sql);
+        $row = mysqli_fetch_assoc($result);
 
-    $username = $row['username'];
-    $hak_akses = $row['hak_akses'];
-}
-
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $id_user = $_POST['id_user'];
-    $username = $_POST['username'];
-    $password = $_POST['password'];
-    $hak_akses = $_POST['hak_akses'];
-
-    if (empty($password)) {
-        $sql = "UPDATE user SET username='$username', hak_akses='$hak_akses' WHERE id_user=$id_user";
-    } else {
-        $password = password_hash($password, PASSWORD_DEFAULT);
-        $sql = "UPDATE user SET username='$username', password='$password', hak_akses='$hak_akses' WHERE id_user=$id_user";
+        $username = $row['username'];
+        $hak_akses = $row['hak_akses'];
     }
 
-    if ($conn->query($sql) === TRUE) {
-        $success = "User updated successfully.";
-        header("Location: index.php");
-    } else {
-        $error = "Error updating user: " . $conn->error;
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        $id_user = $_POST['id_user'];
+        $username = $_POST['username'];
+        $password = $_POST['password'];
+        $hak_akses = $_POST['hak_akses'];
+
+        if (empty($password)) {
+            $sql = "UPDATE user SET username='$username', hak_akses='$hak_akses' WHERE id_user=$id_user";
+        } else {
+            $password = password_hash($password, PASSWORD_DEFAULT);
+            $sql = "UPDATE user SET username='$username', password='$password', hak_akses='$hak_akses' WHERE id_user=$id_user";
+        }
+
+        if ($conn->query($sql) === TRUE) {
+            $success = "User updated successfully.";
+            header("Location: index.php");
+        } else {
+            $error = "Error updating user: " . $conn->error;
+        }
     }
-}
 ?>
 
 <!DOCTYPE html>

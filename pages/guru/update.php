@@ -1,5 +1,6 @@
 <?php
   include '../../includes/db_connect.php';
+  include '../../includes/session.php';
 
   $id = $_GET['updateId'];
   $sql = "select * from `guru` where id_guru='$id'";

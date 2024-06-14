@@ -1,23 +1,24 @@
 <?php
-include '../../includes/db_connect.php';
+    include '../../includes/db_connect.php';
+    include '../../includes/session.php';
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $nama_pelajaran = $_POST['nama_pelajaran'];
-    $guru_id = $_POST['guru_id'];
-    $hari = $_POST['hari'];
-    $jam_mulai = $_POST['jam_mulai'];
-    $jam_selesai = $_POST['jam_selesai'];
-    $ruang = $_POST['ruang'];
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        $nama_pelajaran = $_POST['nama_pelajaran'];
+        $guru_id = $_POST['guru_id'];
+        $hari = $_POST['hari'];
+        $jam_mulai = $_POST['jam_mulai'];
+        $jam_selesai = $_POST['jam_selesai'];
+        $ruang = $_POST['ruang'];
 
-    $sql = "INSERT INTO `jadwal_pelajaran` (nama_pelajaran, guru_id, hari, jam_mulai, jam_selesai, ruang) 
-            VALUES ('$nama_pelajaran', '$guru_id', '$hari', '$jam_mulai', '$jam_selesai', '$ruang')";
+        $sql = "INSERT INTO `jadwal_pelajaran` (nama_pelajaran, guru_id, hari, jam_mulai, jam_selesai, ruang) 
+                VALUES ('$nama_pelajaran', '$guru_id', '$hari', '$jam_mulai', '$jam_selesai', '$ruang')";
 
-    $result = mysqli_query($conn, $sql);
-    if ($result) {
-        header("Location: index.php");
-    } else {
-        die(mysqli_error($conn));
-    }
+        $result = mysqli_query($conn, $sql);
+        if ($result) {
+            header("Location: index.php");
+        } else {
+            die(mysqli_error($conn));
+        }
 }
 ?>
 
@@ -66,7 +67,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <label for="ruang" class="block text-gray-700 dark:text-gray-400">Ruang</label>
                 <input type="text" name="ruang" id="ruang" class="mt-1 block w-full" style="border: 1px solid #d2d6dc; padding: 0.5rem; border-radius: 0.25rem;" required>
             </div>
-            <button type="submit" class="px-4 py-2 bg-blue-600 hover:bg-blue-500 dark:bg-blue-500 hover:bg-blue-600 rounded-lg text-white font-medium">Tambah</button>
+            <button type="submit" class="px-4 py-2 bg-blue-600 hover:bg-blue-500 rounded-lg text-white font-medium">Tambah</button>
         </form>
     </div>
 </body>

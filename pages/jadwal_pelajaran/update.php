@@ -1,29 +1,30 @@
 <?php
-include '../../includes/db_connect.php';
+    include '../../includes/db_connect.php';
+    include '../../includes/session.php';
 
-$id_jadwal = $_GET['updateId'];
+    $id_jadwal = $_GET['updateId'];
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $nama_pelajaran = $_POST['nama_pelajaran'];
-    $guru_id = $_POST['guru_id'];
-    $hari = $_POST['hari'];
-    $jam_mulai = $_POST['jam_mulai'];
-    $jam_selesai = $_POST['jam_selesai'];
-    $ruang = $_POST['ruang'];
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        $nama_pelajaran = $_POST['nama_pelajaran'];
+        $guru_id = $_POST['guru_id'];
+        $hari = $_POST['hari'];
+        $jam_mulai = $_POST['jam_mulai'];
+        $jam_selesai = $_POST['jam_selesai'];
+        $ruang = $_POST['ruang'];
 
-    $sql = "UPDATE `jadwal_pelajaran` SET nama_pelajaran='$nama_pelajaran', guru_id='$guru_id', hari='$hari', jam_mulai='$jam_mulai', jam_selesai='$jam_selesai', ruang='$ruang' WHERE id_jadwal='$id_jadwal'";
+        $sql = "UPDATE `jadwal_pelajaran` SET nama_pelajaran='$nama_pelajaran', guru_id='$guru_id', hari='$hari', jam_mulai='$jam_mulai', jam_selesai='$jam_selesai', ruang='$ruang' WHERE id_jadwal='$id_jadwal'";
 
-    $result = mysqli_query($conn, $sql);
-    if ($result) {
-        header("Location: index.php");
-    } else {
-        die(mysqli_error($conn));
+        $result = mysqli_query($conn, $sql);
+        if ($result) {
+            header("Location: index.php");
+        } else {
+            die(mysqli_error($conn));
+        }
     }
-}
 
-$sql = "SELECT * FROM `jadwal_pelajaran` WHERE id_jadwal='$id_jadwal'";
-$result = mysqli_query($conn, $sql);
-$row = mysqli_fetch_assoc($result);
+    $sql = "SELECT * FROM `jadwal_pelajaran` WHERE id_jadwal='$id_jadwal'";
+    $result = mysqli_query($conn, $sql);
+    $row = mysqli_fetch_assoc($result);
 ?>
 
 <!DOCTYPE html>
@@ -72,7 +73,7 @@ $row = mysqli_fetch_assoc($result);
                 <label for="ruang" class="block text-gray-700 dark:text-gray-400">Ruang</label>
                 <input type="text" name="ruang" id="ruang" class="mt-1 block w-full" value="<?php echo $row['ruang']; ?>" required>
             </div>
-            <button type="submit" class="px-4 py-2 bg-blue-600 hover:bg-blue-500 dark:bg-blue-500 hover:bg-blue-600 rounded-lg text-white font-medium">Update</button>
+            <button type="submit" class="px-4 py-2 bg-blue-600 hover:bg-blue-500 rounded-lg text-white font-medium">Update</button>
         </form>
     </div>
 </body>

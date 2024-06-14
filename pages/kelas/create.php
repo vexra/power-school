@@ -1,5 +1,6 @@
 <?php
   include '../../includes/db_connect.php';
+  include '../../includes/session.php';
 
   if(isset($_POST['submit'])) {
     $nama_kelas = $_POST["nama_kelas"];

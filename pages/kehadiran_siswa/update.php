@@ -1,28 +1,29 @@
 <?php
-include '../../includes/db_connect.php';
+    include '../../includes/db_connect.php';
+    include '../../includes/session.php';
 
-if (isset($_GET['id'])) {
-    $id = $_GET['id'];
+    if (isset($_GET['id'])) {
+        $id = $_GET['id'];
 
-    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-        $id_siswa = $_POST['id_siswa'];
-        $tanggal = $_POST['tanggal'];
-        $status_kehadiran = $_POST['status_kehadiran'];
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $id_siswa = $_POST['id_siswa'];
+            $tanggal = $_POST['tanggal'];
+            $status_kehadiran = $_POST['status_kehadiran'];
 
-        $sql = "UPDATE kehadiran_siswa SET id_siswa='$id_siswa', tanggal='$tanggal', status_kehadiran='$status_kehadiran' WHERE id='$id'";
-        if (mysqli_query($conn, $sql)) {
-            header('Location: index.php');
+            $sql = "UPDATE kehadiran_siswa SET id_siswa='$id_siswa', tanggal='$tanggal', status_kehadiran='$status_kehadiran' WHERE id='$id'";
+            if (mysqli_query($conn, $sql)) {
+                header('Location: index.php');
+            } else {
+                echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+            }
         } else {
-            echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+            $sql = "SELECT * FROM kehadiran_siswa WHERE id='$id'";
+            $result = mysqli_query($conn, $sql);
+            $row = mysqli_fetch_assoc($result);
         }
     } else {
-        $sql = "SELECT * FROM kehadiran_siswa WHERE id='$id'";
-        $result = mysqli_query($conn, $sql);
-        $row = mysqli_fetch_assoc($result);
+        header('Location: index.php');
     }
-} else {
-    header('Location: index.php');
-}
 ?>
 
 <!DOCTYPE html>

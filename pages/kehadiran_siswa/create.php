@@ -1,18 +1,19 @@
 <?php
-include '../../includes/db_connect.php';
+    include '../../includes/db_connect.php';
+    include '../../includes/session.php';
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $id_siswa = $_POST['id_siswa'];
-    $tanggal = $_POST['tanggal'];
-    $status_kehadiran = $_POST['status_kehadiran'];
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        $id_siswa = $_POST['id_siswa'];
+        $tanggal = $_POST['tanggal'];
+        $status_kehadiran = $_POST['status_kehadiran'];
 
-    $sql = "INSERT INTO kehadiran_siswa (id_siswa, tanggal, status_kehadiran) VALUES ('$id_siswa', '$tanggal', '$status_kehadiran')";
-    if (mysqli_query($conn, $sql)) {
-        header('Location: index.php');
-    } else {
-        echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+        $sql = "INSERT INTO kehadiran_siswa (id_siswa, tanggal, status_kehadiran) VALUES ('$id_siswa', '$tanggal', '$status_kehadiran')";
+        if (mysqli_query($conn, $sql)) {
+            header('Location: index.php');
+        } else {
+            echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+        }
     }
-}
 ?>
 
 <!DOCTYPE html>

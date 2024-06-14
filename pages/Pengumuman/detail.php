@@ -1,14 +1,15 @@
 <?php
     include '../../includes/db_connect.php';
+    include '../../includes/session.php';
 
-if (isset($_GET['id'])) {
-    $id = $_GET['id'];
-    
-    $sql = "SELECT judul, konten, penulis, tanggal FROM pengumuman WHERE id=$id";
-    $result = $conn->query($sql);
-    
-    if ($result->num_rows > 0) {
-        $row = $result->fetch_assoc();
+    if (isset($_GET['id'])) {
+        $id = $_GET['id'];
+        
+        $sql = "SELECT judul, konten, penulis, tanggal FROM pengumuman WHERE id=$id";
+        $result = $conn->query($sql);
+        
+        if ($result->num_rows > 0) {
+            $row = $result->fetch_assoc();
 ?>
 <!DOCTYPE html>
 <html lang="en">

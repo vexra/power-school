@@ -1,19 +1,20 @@
 <?php
-include '../../includes/db_connect.php';
+    include '../../includes/db_connect.php';
+    include '../../includes/session.php';
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $username = $_POST['username'];
-    $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
-    $hak_akses = $_POST['hak_akses'];
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        $username = $_POST['username'];
+        $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+        $hak_akses = $_POST['hak_akses'];
 
-    $sql = "INSERT INTO user (username, password, hak_akses) VALUES ('$username', '$password', '$hak_akses')";
+        $sql = "INSERT INTO user (username, password, hak_akses) VALUES ('$username', '$password', '$hak_akses')";
 
-    if ($conn->query($sql) === TRUE) {
-        header("Location: index.php");
-    } else {
-        echo "Error: " . $sql . "<br>" . $conn->error;
+        if ($conn->query($sql) === TRUE) {
+            header("Location: index.php");
+        } else {
+            echo "Error: " . $sql . "<br>" . $conn->error;
+        }
     }
-}
 ?>
 
 <!DOCTYPE html>

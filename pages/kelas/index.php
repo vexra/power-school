@@ -1,5 +1,6 @@
 <?php
     include '../../includes/db_connect.php';
+    include '../../includes/session.php';
 ?>
 
 <!DOCTYPE html>
@@ -70,10 +71,10 @@
                                             '.$informasi_tambahan.'
                                         </td>
                                         <td class="px-6 py-4 flex items-center justify-center gap-2">
-                                            <a href="update.php?updateId='.$id_kelas.'" class="px-4 py-2 bg-blue-600 hover:bg-blue-500 dark:bg-blue-500 hover:bg-blue-600 rounded-lg text-white font-medium">
+                                            <a href="update.php?updateId='.$id_kelas.'" class="px-4 py-2 bg-blue-600 hover:bg-blue-500 rounded-lg text-white font-medium">
                                                 Edit
                                             </a>
-                                            <a href="delete.php?deleteId='.$id_kelas.'" class="px-4 py-2 bg-red-600 hover:bg-red-500 dark:bg-red-500 hover:bg-red-600 rounded-lg text-white font-medium">
+                                            <a href="delete.php?deleteId='.$id_kelas.'" class="px-4 py-2 bg-red-600 hover:bg-red-500 rounded-lg text-white font-medium">
                                                 Delete
                                             </a>
                                         </td>
