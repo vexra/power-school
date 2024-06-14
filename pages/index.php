@@ -130,10 +130,12 @@
             margin-bottom: 20px;
         }
 
+
         .stats, .details {
             display: flex;
             justify-content: space-between;
-            margin-bottom: 20px;
+            margin-bottom: 55px;
+            height: 100px;
         }
 
         .card, .detail-card {
@@ -144,8 +146,16 @@
             margin: 0 10px;
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s, background-color 0.3s;
+            text-decoration: none;
+            color: inherit;
         }
 
+        .card:hover, .detail-card:hover {
+            transform: translateY(-10px);
+            background-color: #f1f1f1;
+            cursor: pointer;
+        }
         .card h3, .detail-card h3 {
             font-size: 2rem;
             margin-bottom: 10px;
@@ -161,6 +171,21 @@
             margin: 10px 0;
             border-radius: 5px;
             box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s, background-color 0.3s;
+        }
+
+        .downloads ul li:hover {
+            transform: translateY(-5px);
+            background-color: #f1f1f1;
+            cursor: pointer;
+        }
+
+        .downloads ul li a {
+            display: block;
+            text-decoration: none;
+            color: inherit;
+            height: 100%;
+            width: 100%;
         }
     </style>
 </head>
@@ -173,13 +198,13 @@
             <nav class="menu">
                 <ul>
                     <li class="menu-item"><a href="#"><i class="fas fa-tachometer-alt"></i><span class="menu-item-text">Dashboard</span></a></li>
-                    <li class="menu-item"><a href="#"><i class="fas fa-user-graduate"></i><span class="menu-item-text">Siswa</span></a></li>
-                    <li class="menu-item"><a href="#"><i class="fas fa-chalkboard-teacher"></i><span class="menu-item-text">Guru</span></a></li>
-                    <li class="menu-item"><a href="#"><i class="fas fa-clipboard-list"></i><span class="menu-item-text">Nilai</span></a></li>
-                    <li class="menu-item"><a href="#"><i class="fas fa-school"></i><span class="menu-item-text">Kelas</span></a></li>
-                    <li class="menu-item"><a href="#"><i class="fas fa-calendar-alt"></i><span class="menu-item-text">Jadwal</span></a></li>
-                    <li class="menu-item"><a href="#"><i class="fas fa-check"></i><span class="menu-item-text">Kehadiran</span></a></li>
-                    <li class="menu-item"><a href="#"><i class="fas fa-bullhorn"></i><span class="menu-item-text">Pengumuman</span></a></li>
+                    <li class="menu-item"><a href="siswa/index.php"><i class="fas fa-user-graduate"></i><span class="menu-item-text">Siswa</span></a></li>
+                    <li class="menu-item"><a href="guru/index.php"><i class="fas fa-chalkboard-teacher"></i><span class="menu-item-text">Guru</span></a></li>
+                    <li class="menu-item"><a href="nilai/index.php"><i class="fas fa-clipboard-list"></i><span class="menu-item-text">Nilai</span></a></li>
+                    <li class="menu-item"><a href="kelas/index.php"><i class="fas fa-school"></i><span class="menu-item-text">Kelas</span></a></li>
+                    <li class="menu-item"><a href="jadwal_pelajaran/index.php"><i class="fas fa-calendar-alt"></i><span class="menu-item-text">Jadwal</span></a></li>
+                    <li class="menu-item"><a href="kehadiran_siswa"><i class="fas fa-check"></i><span class="menu-item-text">Kehadiran</span></a></li>
+                    <li class="menu-item"><a href="Pengumuman/index.php"><i class="fas fa-bullhorn"></i><span class="menu-item-text">Pengumuman</span></a></li>
                 </ul>
             </nav>
         </aside>
@@ -189,30 +214,36 @@
                 <div class="header-left">
                     <h1>Selamat Datang di Halaman Administrator</h1>
                 </div>
-                <div class="header-right">
-                    <span>Rio Arisandi</span>
-                    <span>Senin, 30 November 2020</span>
-                    <span>20:20:20</span>
-                </div>
             </header>
             <section class="stats">
-                <div class="card">
+                <a href="nilai/index.php" class="card">
                     <h3>Nilai</h3>
-                </div>
-                <div class="card">
+                </a>
+                <a href="kehadiran_siswa/index.php" class="card">
                     <h3>Kehadiran</h3>
-                </div>
-                <div class="card">
+                </a>
+                <a href="pengumuman/index.php" class="card">
                     <h3>Pengumuman</h3>
-                </div>
+                </a>
             </section>
             <section class="downloads">
-                <h2>NEWS</h2>
+            <h2>HEADLINE NEWS</h2>
                 <ul>
-                    <li>CV Rio arisandi.doc</li>
-                    <li>KUNCI JAWABAN PETRUK.docx</li>
-                    <li>Nilai UAS WEB.pdf</li>
-                    <li>Data Siswa Berprestasi.pdf</li>
+                    <?php
+                    include '../../includes/db_connect.php';
+                    
+                    $sql = "SELECT id, judul FROM pengumuman ORDER BY tanggal DESC";
+                    $result = $conn->query($sql);
+
+                    if ($result->num_rows > 0) {
+                        while($row = $result->fetch_assoc()) {
+                            echo "<li><a href='../pages/Pengumuman/detail.php?id=" . $row["id"] . "'>" . $row["judul"] . "</a></li>";
+                        }
+                    } else {
+                        echo "<li>Tidak ada pengumuman tersedia</li>";
+                    }
+                    $conn->close();
+                    ?>
                 </ul>
             </section>
             <section class="details">
