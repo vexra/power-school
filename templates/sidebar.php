@@ -95,7 +95,7 @@
 
 <aside class="sidebar">
     <div class="profile">
-        <img src="../assets/images/logo.png" alt="Profile Picture">
+        <img src="/power-school/assets/images/logo.png" alt="Profile Picture">
     </div>
     <nav class="menu">
         <ul>

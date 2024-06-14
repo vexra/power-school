@@ -6,6 +6,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
     <title>Pengumuman Sekolah</title>
     <style>
         body {
@@ -116,19 +119,23 @@
     </style>
 </head>
 <body>
-
-<div class="container">
-    <h1>Pengumuman</h1>
-
-    <a href="create_form.php" class="add-button">Tambah Pengumuman Baru</a>
-
-    <div id="pengumuman">
-        <!-- Pengumuman akan ditampilkan di sini -->
+    <main class="flex items-start justify-center">
         <?php
-        include 'read.php';
+            include '../../templates/sidebar.php'
         ?>
-    </div>
-</div>
 
+        <div class="container">
+            <h1>Pengumuman</h1>
+
+            <a href="create_form.php" class="add-button">Tambah Pengumuman Baru</a>
+
+            <div id="pengumuman">
+                <!-- Pengumuman akan ditampilkan di sini -->
+                <?php
+                include 'read.php';
+                ?>
+            </div>
+        </div>
+    </main>
 </body>
 </html>
