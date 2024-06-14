@@ -14,6 +14,7 @@ if ($result->num_rows > 0) {
         echo "<div class='date-box'>";
         echo "<div class='date'>$date</div>";
         echo "<div class='month-year'>$monthYear</div>";
+        echo "<div class='time'>$time WIB</div>";
         echo "</div>";
         echo "<div class='details'>";
         echo "<div class='judul'>" . htmlspecialchars($row["judul"]) . "</div>";

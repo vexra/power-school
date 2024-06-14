@@ -41,9 +41,7 @@ if (isset($_GET['id'])) {
             font-size: 2.5em;
             font-weight: bold;
             color: #333;
-            margin-bottom: 40px;
-            display: flex;
-            justify-content: center;
+            margin-bottom: 20px;
         }
 
         .announcement-detail .penulis, .announcement-detail .tanggal {
