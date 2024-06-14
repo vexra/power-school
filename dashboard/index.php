@@ -1,5 +1,32 @@
 <?php
     include '../includes/session.php';
+    include '../includes/db_connect.php';
+
+    // Mengambil jumlah kelas
+    $sql_kelas_count = "SELECT COUNT(*) AS jumlah_kelas FROM kelas";
+    $result_kelas_count = $conn->query($sql_kelas_count);
+    $row_kelas_count = $result_kelas_count->fetch_assoc();
+    $jumlah_kelas = $row_kelas_count['jumlah_kelas'];
+
+    // Mengambil jumlah pelajaran
+    $sql_pelajaran_count = "SELECT COUNT(*) AS jumlah_pelajaran FROM jadwal_pelajaran";
+    $result_pelajaran_count = $conn->query($sql_pelajaran_count);
+    $row_pelajaran_count = $result_pelajaran_count->fetch_assoc();
+    $jumlah_pelajaran = $row_pelajaran_count['jumlah_pelajaran'];
+
+    // Mengambil jumlah siswa
+    $sql_siswa_count = "SELECT COUNT(*) AS jumlah_siswa FROM siswa";
+    $result_siswa_count = $conn->query($sql_siswa_count);
+    $row_siswa_count = $result_siswa_count->fetch_assoc();
+    $jumlah_siswa = $row_siswa_count['jumlah_siswa'];
+
+    // Mengambil jumlah guru
+    $sql_guru_count = "SELECT COUNT(*) AS jumlah_guru FROM guru";
+    $result_guru_count = $conn->query($sql_guru_count);
+    $row_guru_count = $result_guru_count->fetch_assoc();
+    $jumlah_guru = $row_guru_count['jumlah_guru'];
+
+    $conn->close();
 ?>
 
 <!DOCTYPE html>
@@ -127,37 +154,38 @@
             <h2>HEADLINE NEWS</h2>
                 <ul>
                     <?php
-                    include '../../includes/db_connect.php';
-                    
-                    $sql = "SELECT id, judul FROM pengumuman ORDER BY tanggal DESC";
-                    $result = $conn->query($sql);
+                        include '../includes/db_connect.php';
 
-                    if ($result->num_rows > 0) {
-                        while($row = $result->fetch_assoc()) {
-                            echo "<li><a href='Pengumuman/detail.php?id=" . $row["id"] . "'>" . $row["judul"] . "</a></li>";
+                        $sql = "SELECT id, judul FROM pengumuman ORDER BY tanggal DESC";
+                        $result = $conn->query($sql);
+
+                        if ($result->num_rows > 0) {
+                            while($row = $result->fetch_assoc()) {
+                                echo "<li><a href='Pengumuman/detail.php?id=" . $row["id"] . "'>" . $row["judul"] . "</a></li>";
+                            }
+                        } else {
+                            echo "<li>Tidak ada pengumuman tersedia</li>";
                         }
-                    } else {
-                        echo "<li>Tidak ada pengumuman tersedia</li>";
-                    }
-                    $conn->close();
+
+                        $conn->close();
                     ?>
                 </ul>
             </section>
             <section class="details">
                 <div class="detail-card">
-                    <h3>3</h3>
+                    <h3><?php echo $jumlah_kelas; ?></h3>
                     <p>Kelas</p>
                 </div>
                 <div class="detail-card">
-                    <h3>14</h3>
+                    <h3><?php echo $jumlah_pelajaran; ?></h3>
                     <p>Pelajaran</p>
                 </div>
                 <div class="detail-card">
-                    <h3>5</h3>
+                    <h3><?php echo $jumlah_siswa; ?></h3>
                     <p>Siswa</p>
                 </div>
                 <div class="detail-card">
-                    <h3>7</h3>
+                    <h3><?php echo $jumlah_guru; ?></h3>
                     <p>Guru</p>
                 </div>
             </section>
